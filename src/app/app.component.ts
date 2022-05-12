@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'PropelDec2021FEDORA';
+  title = 'CLINICAL MANAGEMENT SYSTEM v2022';
 }
