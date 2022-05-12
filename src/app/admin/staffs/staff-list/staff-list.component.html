@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="header">
+        <input class="form-control" type="text" placeholder="what do you want to search here"
+        [(ngModel)]="filter">
+        <br>
+        <a [routerLink]="['../emp']" class="btn btn-outline-secondary" 
+        style="float: right;margin-bottom: 10px" >add staff</a>
+    </div>
+    <table class ="table table-bordered table-stripped">
+        <thead>
+            <tr>
+                <th>user id</th>
+                <th>staff No</th>
+                <th>staff Name</th>
+                <th>address</th>
+                <th>dob</th>
+                <th>phone No</th>
+                <th>email Id</th>
+                <th>address</th>
+                <th>doj</th>
+                <th>salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let staff of staffService.staff | filter: filter | paginate: {itemsPerPage:5,currentPage:page}">
+                <td>{{staff.userId}}</td>
+                <td>{{staff.staffNo}}</td>
+                <td>{{staff.fullName}}</td>
+                <td>{{staff.address}}</td>
+                <td>{{staff.dob  | date: 'dd-MMM-yyyy'}}</td>
+                <td>{{staff.mobileno}}</td>
+                <td>{{staff.email}}</td>
+                <td>{{staff.doj | date: 'dd-MMM-yyyy'}} </td>
+                <td>{{staff.salary}} </td>
+                <td><button (click)="updateStaff(staff.id)" class="btn btn-info">Edit</button>&nbsp;
+                    <button (click)="deleteStaff(staff.id)" class="btn btn-sm btn-outline-danger">Delete</button></td>
+            </tr>
+        </tbody>
+
+    </table>
+    <div class="footer">
+        <pagination-controls (pageChange)="page=($event)"></pagination-controls>
+    </div>
+</div>
